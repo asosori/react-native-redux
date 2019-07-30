@@ -2,6 +2,7 @@
     "rulesDirectory": ["tslint-plugin-prettier"],
     "extends": ["tslint-config-standard", "tslint-config-prettier"],
     "rules": {
+      "jsx-boolean-value": [true, "never"],
       "prettier": [
         true, {
           "singleQuote": true,
