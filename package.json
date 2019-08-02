@@ -11,7 +11,8 @@
     "react-native": "0.59.10",
     "react-native-elements": "^1.1.0",
     "react-native-navigation": "^2.26.2",
-    "react-native-vector-icons": "^6.6.0"
+    "react-native-vector-icons": "^6.6.0",
+    "react-navigation": "^3.11.1"
   },
   "devDependencies": {
     "@babel/core": "7.5.5",
@@ -30,6 +31,7 @@
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^4.0.0",
     "typescript": "3.5.3"
   },
   "jest": {
@@ -42,7 +44,7 @@
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "eslint --fix",
+      "tslint --fix",
       "git add"
     ]
   }
