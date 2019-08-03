@@ -1,7 +1,10 @@
-import HomeScreen from '../screens/Home';
+//import HomeScreen from '../screens/Home';
 import { Navigation } from 'react-native-navigation';
+import { registerScreens } from '../screens/screens';
 
-Navigation.registerComponent('HomeScreen', () => HomeScreen);
+registerScreens();
+
+//Navigation.registerComponent('HomeScreen', () => HomeScreen);
 
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
