@@ -11,8 +11,7 @@
     "react-native": "0.59.10",
     "react-native-elements": "^1.1.0",
     "react-native-navigation": "^2.26.2",
-    "react-native-vector-icons": "^6.6.0",
-    "react-navigation": "^3.11.1"
+    "react-native-vector-icons": "^6.6.0"
   },
   "devDependencies": {
     "@babel/core": "7.5.5",
