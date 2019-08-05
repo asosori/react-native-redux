@@ -13,7 +13,9 @@
     "react-native-elements": "^1.1.0",
     "react-native-navigation": "^2.26.2",
     "react-native-vector-icons": "^6.6.0",
-    "react-navigation": "^3.11.1"
+    "react-navigation": "^3.11.1",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.4"
   },
   "devDependencies": {
     "@babel/core": "7.5.5",
@@ -29,6 +31,7 @@
     "metro-react-native-babel-preset": "0.55.0",
     "prettier": "^1.18.2",
     "react-test-renderer": "16.8.3",
+    "redux-devtools": "^3.5.0",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",

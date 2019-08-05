@@ -19,7 +19,7 @@ export default class HomeScreen extends Component {
               component: {
                 name: 'CreateForm'
               }
-            })            
+            })    
           }}
         />
       </Fragment>
