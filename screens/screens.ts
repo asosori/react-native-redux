@@ -3,6 +3,6 @@ import HomeScreen from './Home';
 import CreateScreen from './Create';
 
 export const registerScreens = () => {
-    Navigation.registerComponent('HomeScreen', () => HomeScreen);
-    Navigation.registerComponent('CreateForm', () => CreateScreen);
-}
+  Navigation.registerComponent('HomeScreen', () => HomeScreen);
+  Navigation.registerComponent('CreateForm', () => CreateScreen);
+};
