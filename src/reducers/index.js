@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
+import restaurantFormReducer from './restaurantFormReducer';
 
 export default combineReducers({
-  banana: () => []
+  //banana: () => []
+  restaurantForm: restaurantFormReducer
 });
