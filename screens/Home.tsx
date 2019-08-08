@@ -23,6 +23,7 @@ export default class HomeScreen extends Component<Props> {
           title="新規作成する"
           type="outline"
           onPress={() => {
+            //console.log('gds');
             Navigation.push(this.props.componentId, {
               component: {
                 name: 'CreateForm'

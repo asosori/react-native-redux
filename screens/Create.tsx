@@ -11,6 +11,7 @@ export default class Create extends Component<Props> {
   }
 
   createReview() {
+    console.log('gfffwas');
     // const { place, station, comment } = this.props.restaurantForm;
     // this.props.createReview({ place, station, comment });
   }
@@ -27,7 +28,13 @@ export default class Create extends Component<Props> {
           //leftIcon={{ type: 'font-awesome', name: 'chevron-left' }}
         />
 
-        <Button title="create a review" onPress={this.createReview} />
+        <Button
+          title="create a review"
+          onPress={() => {
+            //console.log('fafkuyds');
+            this.createReview();
+          }}
+        />
       </Fragment>
     );
   }
