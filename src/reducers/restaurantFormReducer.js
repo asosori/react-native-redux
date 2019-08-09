@@ -1,7 +1,23 @@
-const restaurantFormReducer = () => {
-  return (
-    {name: "サイゼ", station: "六本木", comment: "安いです"}
-  )
-}
+// const restaurantFormReducer = (state = initial_state, action) => {
+//   switch (action.type){
+//     case "restaurant_form_update":
+//       return (
+//         { ...state, [action.payload.prop]: action.payload.value }
+//       )
+//     default:
+//       return state
+//     }
+// }
 
-export default restaurantFormReducer;
+// export default restaurantFormReducer;
+
+const initial_state = { name: "", station: "", comment: "" };
+
+export default (state = initial_state, action) => {
+  switch (action.type){
+    case "restaurant_form_update":
+      return {...state, [action.payload.prop]: action.payload.value}
+    default :
+      return state
+  }
+}

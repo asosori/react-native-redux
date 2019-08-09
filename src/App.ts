@@ -1,5 +1,5 @@
 import { Navigation } from 'react-native-navigation';
-import { registerScreens } from '../screens/screens';
+import { registerScreens } from './screens/screens';
 import ReduxThunk from 'redux-thunk';
 
 registerScreens();

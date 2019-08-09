@@ -1,5 +1,5 @@
 import { Navigation } from 'react-native-navigation';
-import store from '../src/store';
+import store from '../store';
 import { Provider } from 'react-redux';
 import HomeScreen from './Home';
 import CreateScreen from './Create';
