@@ -29,20 +29,15 @@ export class Create extends Component<Props> {
   constructor(props: Props) {
     super(props);
     this.createReview = this.createReview.bind(this);
-    this.fetchTasks = this.fetchTasks.bind(this);
+    this.moveHome = this.moveHome.bind(this);
   }
 
-  fetchTasks() {
-    fetch('http://localhost:3001/tasks')
-      .then(response => response.json())
-      .then(json => {
-        console.log(json); //this.setState({ tasks: json })
-        Navigation.push(this.props.componentId, {
-          component: {
-            name: 'HomeScreen'
-          }
-        });
-      });
+  moveHome() {
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'HomeScreen'
+      }
+    });
   }
 
   createReview() {
@@ -56,7 +51,7 @@ export class Create extends Component<Props> {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ name, station, comment })
-    }).then(this.fetchTasks);
+    }).then(this.moveHome);
   }
 
   render() {

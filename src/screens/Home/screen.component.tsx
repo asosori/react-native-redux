@@ -1,13 +1,26 @@
 import React, { Component, Fragment } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
 import { Header, Button } from 'react-native-elements';
 import { Navigation } from 'react-native-navigation';
+import { connect } from 'react-redux';
 
 interface Props {
   componentId: string;
 }
 
-export default class HomeScreen extends Component<Props> {
+class HomeScreen extends Component<Props> {
+  constructor(props: Props) {
+    super(props);
+    this.fetchTasks();
+  }
+
+  fetchTasks() {
+    fetch('http://localhost:3001/tasks')
+      .then(response => response.json())
+      .then(json => {
+        console.log(json); //this.setState({ tasks: json })
+      });
+  }
+
   render() {
     return (
       <Fragment>
@@ -35,3 +48,9 @@ export default class HomeScreen extends Component<Props> {
     );
   }
 }
+
+const mapStateToProps = (state: any) => {
+  return { restaurantlist: state.restaurantList };
+};
+
+export default connect(mapStateToProps)(HomeScreen);
