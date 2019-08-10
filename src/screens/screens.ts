@@ -1,7 +1,7 @@
 import { Navigation } from 'react-native-navigation';
 import store from '../store';
 import { Provider } from 'react-redux';
-import HomeScreen from './Home/screen.component';
+import HomeScreen from './Home/screen.container';
 import CreateScreen from './Create/screen.container';
 
 export const registerScreens = () => {

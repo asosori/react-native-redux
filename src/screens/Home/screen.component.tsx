@@ -1,25 +1,30 @@
 import React, { Component, Fragment } from 'react';
 import { Header, Button } from 'react-native-elements';
 import { Navigation } from 'react-native-navigation';
-import { connect } from 'react-redux';
+import { Text } from 'react-native';
 
 interface Props {
   componentId: string;
+  restaurantFetch: any;
+  restaurantList: any;
 }
 
-class HomeScreen extends Component<Props> {
+export default class HomeScreen extends Component<Props> {
   constructor(props: Props) {
     super(props);
-    this.fetchTasks();
+    //this.fetchTasks();
+    //console.log(this.props.restaurantFetch);
+    this.props.restaurantFetch();
+    //console.log(this.props.restaurantFetch());
   }
 
-  fetchTasks() {
-    fetch('http://localhost:3001/tasks')
-      .then(response => response.json())
-      .then(json => {
-        console.log(json); //this.setState({ tasks: json })
-      });
-  }
+  // fetchTasks() {
+  //   fetch('http://localhost:3001/tasks')
+  //     .then(response => response.json())
+  //     .then(json => {
+  //       console.log(json); //this.setState({ tasks: json })
+  //     });
+  // }
 
   render() {
     return (
@@ -44,13 +49,9 @@ class HomeScreen extends Component<Props> {
             });
           }}
         />
+
+        <Text>{this.props.restaurantList}</Text>
       </Fragment>
     );
   }
 }
-
-const mapStateToProps = (state: any) => {
-  return { restaurantlist: state.restaurantList };
-};
-
-export default connect(mapStateToProps)(HomeScreen);

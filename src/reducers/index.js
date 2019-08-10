@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 import restaurantFormReducer from './restaurantFormReducer';
+import restaurantListReducer from './restaurantListReducer';
 
 export default combineReducers({
-  restaurantForm: restaurantFormReducer
+  restaurantForm: restaurantFormReducer,
+  restaurantList: restaurantListReducer
 });
