@@ -1,18 +1,25 @@
 import React, { Fragment, Component } from 'React';
 import { Input, Button } from 'react-native-elements';
-import { connect } from 'react-redux';
-import restaurantFormUpdate from '../actions/restaurantFormUpdate';
 
-interface Props {
-  componentId: string;
-  restaurantForm: any;
-  restaurantFormUpdate: (props: {
-    prop: string;
-    value: string;
-  }) => { type: string; payload: any };
+export interface StateProps {
+  restaurantForm: {
+    name: string;
+    station: string;
+    comment: string;
+  };
 }
 
-class Create extends Component<Props> {
+export interface DispatchProps {
+  restaurantFormUpdate: (props: { prop: string; value: string }) => void;
+}
+
+interface OwnProps {
+  componentId: string;
+}
+
+type Props = StateProps & DispatchProps & OwnProps;
+
+export class Create extends Component<Props> {
   constructor(props: Props) {
     super(props);
     this.createReview = this.createReview.bind(this);
@@ -26,12 +33,13 @@ class Create extends Component<Props> {
 
   render() {
     const { name, station, comment } = this.props.restaurantForm;
+
     return (
       <Fragment>
         <Input
           placeholder="店の名前"
           value={name}
-          onChangeText={text => console.log(this.props)}
+          onChangeText={text => console.log(this.props.restaurantFormUpdate)}
         />
 
         <Input
@@ -62,20 +70,3 @@ class Create extends Component<Props> {
     );
   }
 }
-
-const mapStateToProps = (state: any) => {
-  return {
-    restaurantForm: state.restaurantForm
-  };
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    restaurantFormUpdate: () => dispatch(restaurantFormUpdate)
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Create);
