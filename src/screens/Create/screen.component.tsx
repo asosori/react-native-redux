@@ -11,6 +11,11 @@ export interface StateProps {
 
 export interface DispatchProps {
   restaurantFormUpdate: (props: { prop: string; value: string }) => void;
+  restaurantCreate: (props: {
+    name: string;
+    station: string;
+    comment: string;
+  }) => void;
 }
 
 interface OwnProps {
@@ -26,9 +31,9 @@ export class Create extends Component<Props> {
   }
 
   createReview() {
-    //console.log('gfffwas');
-    //const { name, station, comment } = this.props.restaurantForm;
-    //this.props.createReview({ name, station, comment });
+    console.log('fhirev');
+    // const { name, station, comment } = this.props.restaurantForm;
+    // this.props.restaurantCreate({ name, station, comment });
   }
 
   render() {
