@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from 'React';
 import { Input, Button } from 'react-native-elements';
+import { Navigation } from 'react-native-navigation';
 
 export interface StateProps {
   restaurantForm: {
@@ -28,12 +29,34 @@ export class Create extends Component<Props> {
   constructor(props: Props) {
     super(props);
     this.createReview = this.createReview.bind(this);
+    this.fetchTasks = this.fetchTasks.bind(this);
+  }
+
+  fetchTasks() {
+    fetch('http://localhost:3001/tasks')
+      .then(response => response.json())
+      .then(json => {
+        console.log(json); //this.setState({ tasks: json })
+        Navigation.push(this.props.componentId, {
+          component: {
+            name: 'HomeScreen'
+          }
+        });
+      });
   }
 
   createReview() {
-    console.log('fhirev');
-    // const { name, station, comment } = this.props.restaurantForm;
-    // this.props.restaurantCreate({ name, station, comment });
+    const { name, station, comment } = this.props.restaurantForm;
+    //this.props.restaurantCreate({ name, station, comment });
+
+    fetch('http://localhost:3001/tasks', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name, station, comment })
+    }).then(this.fetchTasks);
   }
 
   render() {
@@ -44,7 +67,9 @@ export class Create extends Component<Props> {
         <Input
           placeholder="店の名前"
           value={name}
-          onChangeText={text => console.log(this.props.restaurantFormUpdate)}
+          onChangeText={text =>
+            this.props.restaurantFormUpdate({ prop: 'name', value: text })
+          }
         />
 
         <Input

@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "json-server": "json-server --port 3001 --watch db.json"
   },
   "dependencies": {
     "react": "16.8.3",
@@ -28,6 +29,7 @@
     "babel-jest": "24.8.0",
     "husky": "^3.0.2",
     "jest": "24.8.0",
+    "json-server": "^0.15.0",
     "lint-staged": "^9.2.1",
     "metro-react-native-babel-preset": "0.55.0",
     "prettier": "^1.18.2",
