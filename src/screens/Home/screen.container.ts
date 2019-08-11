@@ -4,11 +4,20 @@ import restaurantFetch from '../../actions/restaurantFetch';
 import HomeScreen from './screen.component';
 
 const mapStateToProps = (state: any) => {
-  return { restaurantlist: state.restaurantList };
+  return { restaurantList: state.restaurantList };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => {
-  return { restaurantFetch: () => dispatch(restaurantFetch()) };
+  return {
+    restaurantFetch: () => {
+      fetch('http://localhost:3001/tasks')
+        .then(response => response.json())
+        .then(json => {
+          //console.log('jeioj');
+          dispatch(restaurantFetch(json)); //this.setState({ tasks: json })
+        });
+    }
+  };
 };
 
 export default connect(

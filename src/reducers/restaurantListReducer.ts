@@ -4,10 +4,10 @@ export default (
   state = initial_state,
   action: { type: string; payload: string }
 ) => {
-  console.log(action);
+  //console.log(action);
   switch (action.type) {
     case 'restaurant_fetch':
-      console.log('fetc');
+      console.log('fetch');
       return action.payload;
     default:
       console.log('default');

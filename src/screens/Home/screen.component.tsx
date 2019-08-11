@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
-import { Header, Button } from 'react-native-elements';
+import { Header, Button, ListItem } from 'react-native-elements';
 import { Navigation } from 'react-native-navigation';
-import { Text } from 'react-native';
+import { Text, FlatList } from 'react-native';
 
 interface Props {
   componentId: string;
-  restaurantFetch: any;
+  restaurantFetch: () => void;
   restaurantList: any;
 }
 
@@ -15,7 +15,8 @@ export default class HomeScreen extends Component<Props> {
     //this.fetchTasks();
     //console.log(this.props.restaurantFetch);
     this.props.restaurantFetch();
-    //console.log(this.props.restaurantFetch());
+    //console.log(this.props.restaurantList);
+    //this.moveEdit = this.moveEdit.bind(this);
   }
 
   // fetchTasks() {
@@ -25,6 +26,19 @@ export default class HomeScreen extends Component<Props> {
   //       console.log(json); //this.setState({ tasks: json })
   //     });
   // }
+
+  // moveEdit() {
+  //   Navigation.push(this.props.componentId, {
+  //     component: {
+  //       name: 'CreateScreen'
+  //     }
+  //   });
+  // }
+
+  // _renderItem = (item: any) => {
+  //   //<Text>vdse</Text>;
+  //   <ListItem title={item.name} subtitle={item.name} onPress={this.moveEdit} />;
+  // };
 
   render() {
     return (
@@ -36,7 +50,6 @@ export default class HomeScreen extends Component<Props> {
             style: { color: '#fff' }
           }}
         />
-
         <Button
           title="新規作成する"
           type="outline"
@@ -49,8 +62,10 @@ export default class HomeScreen extends Component<Props> {
             });
           }}
         />
-
-        <Text>{this.props.restaurantList}</Text>
+        {/* <FlatList
+          data={this.props.restaurantList}
+          renderItem={this._renderItem}
+        /> */}
       </Fragment>
     );
   }
