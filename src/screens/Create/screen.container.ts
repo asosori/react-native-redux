@@ -12,7 +12,8 @@ const mapStateToProps = (state: State): StateProps => {
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>): DispatchProps => {
   return {
-    restaurantFormUpdate: props => dispatch(restaurantFormUpdate(props))
+    restaurantFormUpdate: props => dispatch(restaurantFormUpdate(props)),
+    formReset: () => dispatch({ type: 'restaurant_form_after_create' })
   };
 };
 

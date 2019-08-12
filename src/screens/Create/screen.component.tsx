@@ -21,6 +21,7 @@ export interface State {
 
 export interface DispatchProps {
   restaurantFormUpdate: (props: { prop: string; value: string }) => void;
+  formReset: () => void;
 }
 
 interface OwnProps {
@@ -37,6 +38,7 @@ export class Create extends Component<Props> {
   }
 
   moveHome() {
+    this.props.formReset();
     Navigation.push(this.props.componentId, {
       component: {
         name: 'HomeScreen'
