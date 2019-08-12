@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'React';
 import { Input, Button } from 'react-native-elements';
 import { Navigation } from 'react-native-navigation';
-import { Text } from 'react-native';
+import RestaurantForm from '../RestaurantForm';
 
 export interface StateProps {
   restaurantForm: {
@@ -11,20 +11,23 @@ export interface StateProps {
   };
 }
 
-export interface DispatchProps {
-  restaurantFormUpdate: (props: { prop: string; value: string }) => void;
-  restaurantCreate: (props: {
+export interface State {
+  restaurantForm: {
     name: string;
     station: string;
     comment: string;
-  }) => void;
+  };
+}
+
+export interface DispatchProps {
+  restaurantFormUpdate: (props: { prop: string; value: string }) => void;
 }
 
 interface OwnProps {
   componentId: string;
 }
 
-type Props = StateProps & DispatchProps & OwnProps;
+type Props = StateProps & DispatchProps & State & OwnProps;
 
 export class Create extends Component<Props> {
   constructor(props: Props) {
@@ -60,7 +63,8 @@ export class Create extends Component<Props> {
 
     return (
       <Fragment>
-        <Input
+        <RestaurantForm {...this.props} />
+        {/* <Input
           placeholder="お店の名前"
           value={name}
           onChangeText={text =>
@@ -83,7 +87,7 @@ export class Create extends Component<Props> {
             this.props.restaurantFormUpdate({ prop: 'comment', value: text })
           }
           //leftIcon={{ type: 'font-awesome', name: 'chevron-left' }}
-        />
+        /> */}
 
         <Button
           title="create a review"

@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 import React, { Fragment, Component } from 'React';
 import { Input, Button } from 'react-native-elements';
+import RestaurantForm from '../RestaurantForm';
 import { Dispatch, Action } from 'redux';
+// import restaurantUpdate from ''
 
 export interface Props {
   restaurant: {
@@ -26,18 +28,24 @@ export default class EditScreen extends Component<Props> {
 
         <Input value={this.props.restaurant.comment} placeholder="コメント" />
 
-        <Button title="更新する" onPress={() => console.log('vnio')} />
+        <Button
+          title="更新する"
+          onPress={() => console.log('pushed the update button')}
+        />
       </Fragment>
     );
   }
 }
 
 // const mapStateToProps = (state: any) => {
-//   restaurantForm: state.restaurantForm
-// }
+//   return { restaurantForm: state.restaurantForm };
+// };
 
 // const mapDispatchToProps = (dispatch: Dispatch<Action>) => {
-//   restaurantUpdate: () => dispatch(restaurantUpdate())
-// }
+//   return { restaurantUpdate: () => dispatch(restaurantUpdate()) };
+// };
 
-// export connect(mapStateToProps, mapDispatchToProps)(EditScreen);
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(EditScreen);

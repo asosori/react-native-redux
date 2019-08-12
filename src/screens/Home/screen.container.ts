@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) => {
       fetch('http://localhost:3001/tasks')
         .then(response => response.json())
         .then(json => {
-          //console.log('jeioj');
+          //console.log(json);
           dispatch(restaurantFetch(json)); //this.setState({ tasks: json })
         });
     }
