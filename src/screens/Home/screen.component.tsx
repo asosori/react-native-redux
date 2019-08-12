@@ -1,44 +1,45 @@
 import React, { Component, Fragment } from 'react';
 import { Header, Button, ListItem } from 'react-native-elements';
 import { Navigation } from 'react-native-navigation';
-import { Text, FlatList } from 'react-native';
+import { Text, FlatList, ListRenderItemInfo } from 'react-native';
 
 interface Props {
   componentId: string;
   restaurantFetch: () => void;
-  restaurantList: any;
+  restaurantList: Array<{ name: string; station: string; comment: string }>;
 }
 
 export default class HomeScreen extends Component<Props> {
   constructor(props: Props) {
     super(props);
-    //this.fetchTasks();
     //console.log(this.props.restaurantFetch);
     this.props.restaurantFetch();
     //console.log(this.props.restaurantList);
-    //this.moveEdit = this.moveEdit.bind(this);
+    this.moveEditScreen = this.moveEditScreen.bind(this);
+    //this._renderItem = this._renderItem.bind(this);
   }
 
-  // fetchTasks() {
-  //   fetch('http://localhost:3001/tasks')
-  //     .then(response => response.json())
-  //     .then(json => {
-  //       console.log(json); //this.setState({ tasks: json })
-  //     });
-  // }
+  moveEditScreen(data: { name: string; station: string; comment: string }) {
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'EditScreen',
+        passProps: {
+          restaurant: data
+        }
+      }
+    });
+  }
 
-  // moveEdit() {
-  //   Navigation.push(this.props.componentId, {
-  //     component: {
-  //       name: 'CreateScreen'
-  //     }
-  //   });
-  // }
-
-  // _renderItem = (item: any) => {
-  //   //<Text>vdse</Text>;
-  //   <ListItem title={item.name} subtitle={item.name} onPress={this.moveEdit} />;
-  // };
+  renderItem = (
+    info: ListRenderItemInfo<{ name: string; station: string; comment: string }>
+  ) => {
+    return (
+      <ListItem
+        title={info.item.name}
+        onPress={() => this.moveEditScreen(info.item)}
+      />
+    );
+  };
 
   render() {
     return (
@@ -62,10 +63,11 @@ export default class HomeScreen extends Component<Props> {
             });
           }}
         />
-        {/* <FlatList
+
+        <FlatList
           data={this.props.restaurantList}
-          renderItem={this._renderItem}
-        /> */}
+          renderItem={this.renderItem}
+        />
       </Fragment>
     );
   }

@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from 'React';
 import { Input, Button } from 'react-native-elements';
 import { Navigation } from 'react-native-navigation';
+import { Text } from 'react-native';
 
 export interface StateProps {
   restaurantForm: {
@@ -60,7 +61,7 @@ export class Create extends Component<Props> {
     return (
       <Fragment>
         <Input
-          placeholder="店の名前"
+          placeholder="お店の名前"
           value={name}
           onChangeText={text =>
             this.props.restaurantFormUpdate({ prop: 'name', value: text })
