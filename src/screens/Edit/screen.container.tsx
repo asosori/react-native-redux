@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 import React, { Fragment, Component } from 'React';
 import { Input, Button } from 'react-native-elements';
-import RestaurantForm from '../RestaurantForm';
 import { Dispatch, Action } from 'redux';
+import { Navigation } from 'react-native-navigation';
 import restaurantFormUpdate from '../../actions/restaurantFormUpdate';
 import restaurantSave from '../../actions/restaurantSave';
+import RestaurantForm from '../RestaurantForm';
 import _ from 'lodash';
 
 export interface Props {
@@ -15,16 +16,36 @@ export interface Props {
   };
   restaurantSave: () => void;
   restaurantFormUpdate: (props: { prop: string; value: string }) => void;
+  componentId: string;
 }
 
 class EditScreen extends Component<Props> {
+  static options() {
+    return {
+      topBar: {
+        leftButtons: {
+          id: 'button1',
+          text: 'ホームへ'
+        }
+      }
+    };
+  }
   // onPressUpdate(){
   //   this.props.restaurantSave();
   // }
   constructor(props: Props) {
     super(props);
+    Navigation.events().bindComponent(this);
     _.each(this.props.restaurant, (value, prop) => {
       this.props.restaurantFormUpdate({ prop, value });
+    });
+  }
+
+  navigationButtonPressed() {
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'HomeScreen'
+      }
     });
   }
 

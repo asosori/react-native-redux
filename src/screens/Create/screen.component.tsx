@@ -31,10 +31,31 @@ interface OwnProps {
 type Props = StateProps & DispatchProps & State & OwnProps;
 
 export class Create extends Component<Props> {
+  static options() {
+    return {
+      topBar: {
+        leftButtons: {
+          id: 'button1',
+          text: 'ホームへ'
+        }
+      }
+    };
+  }
+
   constructor(props: Props) {
     super(props);
+    Navigation.events().bindComponent(this);
     this.createReview = this.createReview.bind(this);
     this.moveHome = this.moveHome.bind(this);
+  }
+
+  navigationButtonPressed() {
+    Navigation.push(this.props.componentId, {
+      component: {
+        name: 'HomeScreen'
+      }
+    });
+    //console.log(buttonId);
   }
 
   moveHome() {
@@ -61,7 +82,7 @@ export class Create extends Component<Props> {
   }
 
   render() {
-    const { name, station, comment } = this.props.restaurantForm;
+    //const { name, station, comment } = this.props.restaurantForm;
 
     return (
       <Fragment>

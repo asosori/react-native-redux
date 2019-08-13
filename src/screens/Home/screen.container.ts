@@ -16,7 +16,8 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) => {
           //console.log(json);
           dispatch(restaurantFetch(json)); //this.setState({ tasks: json })
         });
-    }
+    },
+    formReset: () => dispatch({ type: 'restaurant_form_after_create' })
   };
 };
 

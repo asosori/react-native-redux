@@ -7,16 +7,40 @@ interface Props {
   componentId: string;
   restaurantFetch: () => void;
   restaurantList: Array<{ name: string; station: string; comment: string }>;
+  formReset: () => void;
 }
 
 export default class HomeScreen extends Component<Props> {
+  static options() {
+    return {
+      topBar: {
+        leftButtons: [
+          {
+            id: 'buttonOne',
+            text: 'button'
+          }
+        ]
+      }
+    };
+  }
   constructor(props: Props) {
     super(props);
     //console.log(this.props.restaurantFetch);
     this.props.restaurantFetch();
+    this.props.formReset();
     //console.log(this.props.restaurantList);
     this.moveEditScreen = this.moveEditScreen.bind(this);
     //this._renderItem = this._renderItem.bind(this);
+    Navigation.mergeOptions(this.props.componentId, {
+      topBar: {
+        rightButtons: [
+          {
+            id: 'myDynamicButton',
+            text: 'My Button'
+          }
+        ]
+      }
+    });
   }
 
   moveEditScreen(data: { name: string; station: string; comment: string }) {
