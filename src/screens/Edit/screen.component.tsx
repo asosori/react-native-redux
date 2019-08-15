@@ -49,11 +49,6 @@ export default class EditScreen extends Component<Props> {
     return (
       <Fragment>
         <RestaurantForm {...this.props} />
-        {/* <Input value={this.props.restaurant.name} placeholder="お店の名前" />
-
-        <Input value={this.props.restaurant.station} placeholder="最寄駅" />
-
-        <Input value={this.props.restaurant.comment} placeholder="コメント" /> */}
 
         <Button title="更新する" onPress={() => this.props.restaurantSave()} />
       </Fragment>

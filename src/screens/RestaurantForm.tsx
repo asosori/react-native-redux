@@ -1,13 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Text } from 'react-native';
 import { Input } from 'react-native-elements';
-// import { connect } from 'react-redux';
-// import restaurantFormUpdate from '../actions/restaurantFormUpdate';
-// import { Dispatch, Action } from 'redux';
-
-// interface State {
-//   restaurantForm: { name: string; station: string; comment: string };
-// }
 
 interface StateProps {
   restaurantForm: { name: string; station: string; comment: string };
@@ -53,20 +46,3 @@ export default class RestaurantForm extends Component<Props> {
     );
   }
 }
-
-// const mapStateToProps = (state: State): StateProps => {
-//   return {
-//     restaurantForm: state.restaurantForm
-//   };
-// };
-
-// const mapDispatchToProps = (dispatch: Dispatch<Action>): DispatchProp => {
-//   return {
-//     restaurantFormUpdate: props => dispatch(restaurantFormUpdate(props))
-//   };
-// };
-
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(RestaurantForm);

@@ -25,12 +25,9 @@ export default class HomeScreen extends Component<Props> {
   }
   constructor(props: Props) {
     super(props);
-    //console.log(this.props.restaurantFetch);
     this.props.restaurantFetch();
     this.props.formReset();
-    //console.log(this.props.restaurantList);
     this.moveEditScreen = this.moveEditScreen.bind(this);
-    //this._renderItem = this._renderItem.bind(this);
     Navigation.mergeOptions(this.props.componentId, {
       topBar: {
         rightButtons: [
@@ -79,7 +76,6 @@ export default class HomeScreen extends Component<Props> {
           title="新規作成する"
           type="outline"
           onPress={() => {
-            //console.log('gds');
             Navigation.push(this.props.componentId, {
               component: {
                 name: 'CreateForm'

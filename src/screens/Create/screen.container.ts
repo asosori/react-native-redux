@@ -21,7 +21,6 @@ const mapDispatchToProps = (
   return {
     restaurantFormUpdate: props => dispatch(restaurantFormUpdate(props)),
     createReview: props => dispatch(createReview(props, ownProps.componentId))
-    //formReset: () => dispatch({ type: 'restaurant_form_after_create' })
   };
 };
 

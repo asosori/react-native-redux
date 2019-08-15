@@ -13,8 +13,7 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) => {
       fetch('http://localhost:3001/restaurants')
         .then(response => response.json())
         .then(json => {
-          //console.log(json);
-          dispatch(restaurantFetch(json)); //this.setState({ tasks: json })
+          dispatch(restaurantFetch(json));
         });
     },
     formReset: () => dispatch({ type: 'restaurant_form_after_create' })
