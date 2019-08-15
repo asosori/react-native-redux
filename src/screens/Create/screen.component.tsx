@@ -21,14 +21,11 @@ export interface State {
 
 export interface DispatchProps {
   restaurantFormUpdate: (props: { prop: string; value: string }) => void;
-  createReview: (
-    props: {
-      name: string;
-      station: string;
-      comment: string;
-    },
-    componentId: string
-  ) => void;
+  createReview: (props: {
+    name: string;
+    station: string;
+    comment: string;
+  }) => void;
 }
 
 interface OwnProps {
@@ -122,10 +119,7 @@ export class Create extends Component<Props> {
           title="create a review"
           onPress={() => {
             //console.log(this.props.componentId);
-            this.props.createReview(
-              { name, station, comment },
-              this.props.componentId
-            );
+            this.props.createReview({ name, station, comment });
           }}
         />
       </Fragment>
