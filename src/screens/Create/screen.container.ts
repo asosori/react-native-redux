@@ -1,8 +1,8 @@
 import { State, StateProps, DispatchProps, Create } from './screen.component';
 import { Dispatch, Action } from 'redux';
 import restaurantFormUpdate from '../../actions/restaurantFormUpdate';
-import restaurantCreate from '../../actions/restaurantCreate';
 import { connect } from 'react-redux';
+import createReview from '../../actions/restaurantCreate';
 
 const mapStateToProps = (state: State): StateProps => {
   return {
@@ -13,7 +13,9 @@ const mapStateToProps = (state: State): StateProps => {
 const mapDispatchToProps = (dispatch: Dispatch<Action>): DispatchProps => {
   return {
     restaurantFormUpdate: props => dispatch(restaurantFormUpdate(props)),
-    formReset: () => dispatch({ type: 'restaurant_form_after_create' })
+    createReview: (props, componentId) =>
+      dispatch(createReview(props, componentId))
+    //formReset: () => dispatch({ type: 'restaurant_form_after_create' })
   };
 };
 

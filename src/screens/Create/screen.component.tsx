@@ -21,7 +21,14 @@ export interface State {
 
 export interface DispatchProps {
   restaurantFormUpdate: (props: { prop: string; value: string }) => void;
-  formReset: () => void;
+  createReview: (
+    props: {
+      name: string;
+      station: string;
+      comment: string;
+    },
+    componentId: string
+  ) => void;
 }
 
 interface OwnProps {
@@ -45,8 +52,8 @@ export class Create extends Component<Props> {
   constructor(props: Props) {
     super(props);
     Navigation.events().bindComponent(this);
-    this.createReview = this.createReview.bind(this);
-    this.moveHome = this.moveHome.bind(this);
+    //this.createReview = this.createReview.bind(this);
+    //this.moveHome = this.moveHome.bind(this);
   }
 
   navigationButtonPressed() {
@@ -58,31 +65,30 @@ export class Create extends Component<Props> {
     //console.log(buttonId);
   }
 
-  moveHome() {
-    this.props.formReset();
-    Navigation.push(this.props.componentId, {
-      component: {
-        name: 'HomeScreen'
-      }
-    });
-  }
+  // moveHome() {
+  //   //this.props.formReset();
+  //   Navigation.push(this.props.componentId, {
+  //     component: {
+  //       name: 'HomeScreen'
+  //     }
+  //   });
+  // }
 
-  createReview() {
-    const { name, station, comment } = this.props.restaurantForm;
-    //this.props.restaurantCreate({ name, station, comment });
+  // createReview() {
+  //   const { name, station, comment } = this.props.restaurantForm;
 
-    fetch('http://localhost:3001/tasks', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ name, station, comment })
-    }).then(this.moveHome);
-  }
+  //   fetch('http://localhost:3001/tasks', {
+  //     method: 'POST',
+  //     headers: {
+  //       Accept: 'application/json',
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({ name, station, comment })
+  //   }).then(this.moveHome);
+  // }
 
   render() {
-    //const { name, station, comment } = this.props.restaurantForm;
+    const { name, station, comment } = this.props.restaurantForm;
 
     return (
       <Fragment>
@@ -115,8 +121,11 @@ export class Create extends Component<Props> {
         <Button
           title="create a review"
           onPress={() => {
-            //console.log('fafkuyds');
-            this.createReview();
+            //console.log(this.props.componentId);
+            this.props.createReview(
+              { name, station, comment },
+              this.props.componentId
+            );
           }}
         />
       </Fragment>

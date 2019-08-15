@@ -10,7 +10,7 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => {
   return {
     restaurantFetch: () => {
-      fetch('http://localhost:3001/tasks')
+      fetch('http://localhost:3001/restaurants')
         .then(response => response.json())
         .then(json => {
           //console.log(json);
