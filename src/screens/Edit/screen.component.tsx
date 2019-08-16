@@ -4,16 +4,38 @@ import { Navigation } from 'react-native-navigation';
 import RestaurantForm from '../RestaurantForm';
 import _ from 'lodash';
 
-export interface Props {
+export interface otherProps {
   restaurant: {
+    id: number;
     name: string;
     station: string;
     comment: string;
   };
-  restaurantSave: () => void;
-  restaurantFormUpdate: (props: { prop: string; value: string }) => void;
   componentId: string;
 }
+
+export interface StateProps {
+  restaurantForm: { name: string; station: string; comment: string };
+}
+
+export interface DispatchProps {
+  restaurantSave: (
+    props: {
+      name: string;
+      station: string;
+      comment: string;
+    },
+    restaurantId: number,
+    componentId: string
+  ) => void;
+  restaurantFormUpdate: (props: {
+    name: string;
+    station: string;
+    comment: string;
+  }) => void;
+}
+
+type Props = otherProps & StateProps & DispatchProps;
 
 export default class EditScreen extends Component<Props> {
   static options() {
@@ -26,9 +48,7 @@ export default class EditScreen extends Component<Props> {
       }
     };
   }
-  // onPressUpdate(){
-  //   this.props.restaurantSave();
-  // }
+
   constructor(props: Props) {
     super(props);
     Navigation.events().bindComponent(this);
@@ -46,11 +66,24 @@ export default class EditScreen extends Component<Props> {
   }
 
   render() {
+    const { name, station, comment } = this.props.restaurantForm;
+    const restaurantId = this.props.restaurant.id;
+    const componentId = this.props.componentId;
+
     return (
       <Fragment>
         <RestaurantForm {...this.props} />
 
-        <Button title="更新する" onPress={() => this.props.restaurantSave()} />
+        <Button
+          title="更新する"
+          onPress={() =>
+            this.props.restaurantSave(
+              { name, station, comment },
+              restaurantId,
+              componentId
+            )
+          }
+        />
       </Fragment>
     );
   }

@@ -3,7 +3,7 @@ import { Input, Button } from 'react-native-elements';
 import { Navigation } from 'react-native-navigation';
 import RestaurantForm from '../RestaurantForm';
 
-export interface StateProps {
+export interface State {
   restaurantForm: {
     name: string;
     station: string;
@@ -11,7 +11,7 @@ export interface StateProps {
   };
 }
 
-export interface State {
+export interface StateProps {
   restaurantForm: {
     name: string;
     station: string;

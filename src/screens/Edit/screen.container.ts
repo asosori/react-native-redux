@@ -3,16 +3,17 @@ import { Dispatch, Action } from 'redux';
 import EditScreen from './screen.component';
 import restaurantFormUpdate from '../../actions/restaurantFormUpdate';
 import restaurantSave from '../../actions/restaurantSave';
+import { StateProps, DispatchProps } from './screen.component';
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: any): StateProps => {
   return { restaurantForm: state.restaurantForm };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>) => {
+const mapDispatchToProps = (dispatch: Dispatch<Action>): DispatchProps => {
   return {
-    restaurantSave: () => restaurantSave(),
-    restaurantFormUpdate: (props: { prop: string; value: string }) =>
-      dispatch(restaurantFormUpdate(props))
+    restaurantSave: (props, restaurantId, componentId) =>
+      restaurantSave(props, restaurantId, componentId),
+    restaurantFormUpdate: props => dispatch(restaurantFormUpdate(props))
   };
 };
 

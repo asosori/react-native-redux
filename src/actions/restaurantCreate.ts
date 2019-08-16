@@ -28,6 +28,5 @@ export default (
     },
     body: JSON.stringify({ name, station, comment })
   }).then(moveToHome(componentId));
-  //console.log(componentId);
   return { type: 'restaurant_form_after_create' };
 };
