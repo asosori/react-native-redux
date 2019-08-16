@@ -29,4 +29,5 @@ export default (
     },
     body: JSON.stringify({ name, station, comment })
   }).then(moveToHome(componentId));
+  return { type: 'restaurant_form_after_edit' };
 };

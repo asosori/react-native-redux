@@ -12,7 +12,7 @@ const mapStateToProps = (state: any): StateProps => {
 const mapDispatchToProps = (dispatch: Dispatch<Action>): DispatchProps => {
   return {
     restaurantSave: (props, restaurantId, componentId) =>
-      restaurantSave(props, restaurantId, componentId),
+      dispatch(restaurantSave(props, restaurantId, componentId)),
     restaurantFormUpdate: props => dispatch(restaurantFormUpdate(props))
   };
 };
