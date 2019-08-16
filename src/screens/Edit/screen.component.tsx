@@ -84,6 +84,13 @@ export default class EditScreen extends Component<Props> {
             )
           }
         />
+
+        <Button
+          title="削除する"
+          onPress={() => {
+            console.log('delete');
+          }}
+        />
       </Fragment>
     );
   }
