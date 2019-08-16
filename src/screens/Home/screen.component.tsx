@@ -3,12 +3,25 @@ import { Header, Button, ListItem } from 'react-native-elements';
 import { Navigation } from 'react-native-navigation';
 import { Text, FlatList, ListRenderItemInfo } from 'react-native';
 
-interface Props {
+interface otherProps {
   componentId: string;
-  restaurantFetch: () => void;
+}
+
+export interface State {
+  restaurantForm: { name: string; station: string; comment: string };
   restaurantList: Array<{ name: string; station: string; comment: string }>;
+}
+
+export interface StateProps {
+  restaurantList: Array<{ name: string; station: string; comment: string }>;
+}
+
+export interface DispatchProps {
+  restaurantFetch: () => void;
   formReset: () => void;
 }
+
+type Props = State & StateProps & DispatchProps & otherProps;
 
 export default class HomeScreen extends Component<Props> {
   static options() {
