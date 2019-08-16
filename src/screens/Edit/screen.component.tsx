@@ -33,6 +33,7 @@ export interface DispatchProps {
     station: string;
     comment: string;
   }) => void;
+  restaurantDelete: (restaurantId: number, componentId: string) => void;
 }
 
 type Props = otherProps & StateProps & DispatchProps;
@@ -88,7 +89,7 @@ export default class EditScreen extends Component<Props> {
         <Button
           title="削除する"
           onPress={() => {
-            console.log('delete');
+            this.props.restaurantDelete(restaurantId, componentId);
           }}
         />
       </Fragment>

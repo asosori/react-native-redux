@@ -8,6 +8,8 @@ export default (state = initial_state, action) => {
       return initial_state
     case "restaurant_form_after_edit":
       return initial_state
+    case "restaurant_form_after_delete":
+        return initial_state
     default :
       return state
   }
