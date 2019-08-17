@@ -29,9 +29,8 @@ export interface DispatchProps {
     componentId: string
   ) => void;
   restaurantFormUpdate: (props: {
-    name: string;
-    station: string;
-    comment: string;
+    prop: string;
+    value: string | number;
   }) => void;
   restaurantDelete: (restaurantId: number, componentId: string) => void;
 }

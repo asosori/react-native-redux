@@ -3,7 +3,7 @@ const restaurantFormUpdate = ({
   value
 }: {
   prop: string;
-  value: string;
+  value: string | number;
 }) => {
   return { type: 'restaurant_form_update', payload: { prop, value } };
 };
